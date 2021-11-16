@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+	This page was initialy made as homework for school.
+	One of the handicaps was not being able to use JavaScript, or any other scripting language.
+	That's why this page lacks a bit of it.
+-->
+
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> PBar - Crea barras de progreso en la terminal con Python </title>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<div class="lang-changer">
+		<a href=index.html> English </a><a href=pl.html> Polski </a>
+	</div>
+
+	<div class="banner">
+		<h1 class="banner-title">PBar</h1>
+		<span class="banner-subtitle">Crea barras de progreso en la terminal con Python</span>
+	</div>
+
+	<div class="info">
+		<div class="info-item blue">
+			<h1>Fácil de usar</h1>
+			<p>
+				PBar es realmente fácil de usar. Tan solo es necesario establecer el rango de progreso, y establecer los puntos en los que la barra progresará, nada más.
+			</p>
+			<a class="button" href="#showcase1">Ver más</a>
+		</div>
+		<div class="info-item red">
+			<h1>Personalizable</h1>
+			<p>
+				¿Quieres cambiar el color de la zona completada? ¿Mostrar el porcentaje como título de la barra? ¿O simplemente mostrar una barra vertical? Sin problemas, con PBar podrás personalizar <i>casi</i> todos los aspectos que puedas imaginar.
+			</p>
+			<a class="button" href="#showcase4">Personalización</a>
+		</div>
+		<div class="info-item purple">
+			<h1>Completo</h1>
+			<p>
+				PBar cuenta con unas cuantas funciones y objetos que te ayudarán a la hora de gestionar tareas con la barra.
+			</p>
+			<a target="_blank" class="button" href="https://github.com/DarviL82/PBar/wiki">Características</a>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<div class="showcase part1" id="showcase1">
+		<h1 class="show-title">Espera, ¿Seguro que es sencillo?</h1>
+		<div class="show code left">
+			<code>
+<span class="kw">import</span> <span class="obj">pbar</span>
+
+<span class="var">myBar</span> <span class="op">=</span> <span class="obj">pbar</span>.<span class="obj">PBar</span>()
+<span class="var">myBar</span>.<span class="func">draw</span>()
+			</code>
+		</div>
+		<div class="show content right">
+			<p>Aquí tienes el código que genera una barra de carga con los valores por defecto. También muestra la muestra en la terminal. Así que bueno... ¡Debería ser sencillo!</p>
+		</div>
+	</div>
+
+
+	<div class="showcase part2">
+		<h1 class="show-title">Vale vale, pero me interesa que sea algo útil.</h1>
+		<div class="show content left">
+			<p>Eso tiene sentido, a todo el mundo le gustan las cosas útiles, (al menos eso creo). Por eso, puedes mostrar el progreso de un conjunto de tareas de forma súper sencilla.</p>
+		</div>
+		<div class="show code right">
+			<code>
+<span class="func">@</span><span class="obj">pbar</span>.<span class="func">taskWrapper</span>(<span class="var">myBar</span>, <span class="func">locals</span>())
+<span class="kw">def</span><span class="func"> my_task</span>():
+	<span class="func">get_data</span>()
+	<span class="func">process_stuff</span>()
+	<span class="func">show_data</span>()
+	<span class="func">useless_function</span>()
+	<span class="func">another_function</span>()
+			</code>
+		</div>
+	</div>
+
+
+	<div class="showcase part3">
+		<h1 class="show-title">Me dan miedo los <span class='func'>@decoradores</span>, ¿Alguna otra opción?</h1>
+		<div class="show code left">
+			<code>
+<span class="kw">def</span><span class="func"> my_task</span>():
+	<span class="func">get_data</span>()
+	<span class="var">myBar</span>.<span class="func">step</span>()
+	<span class="func">process_stuff</span>()
+	<span class="var">myBar</span>.<span class="func">step</span>()
+	<span class="func">show_data</span>()
+	<span class="var">myBar</span>.<span class="func">step</span>()
+	<span class="func">useless_function</span>()
+	<span class="var">myBar</span>.<span class="func">step</span>()
+	<span class="func">another_function</span>()
+	<span class="var">myBar</span>.<span class="func">step</span>()
+			</code>
+		</div>
+		<div class="show content right">
+			<p><p>¡Pues claro! ¿A quién no le da miedo un decorador? Son verdaderamente terroríficos, y por eso, puedes seguir progresando tu barra de la forma 'clásica'.</p> <p>Eso sí, me temo que tendrás que admitir que es mucho más feo.</p></p>
+		</div>
+	</div>
+
+
+	<div class="showcase part4" id="showcase4">
+		<h1 class="show-title">¿Y si quiero cambiar el color cuando se complete?</h1>
+		<div class="show content" style="width: 100%;">
+			<p>Es tu día de suerte, por que puedes establecer condiciones para bastantes propiedades de la barra, y que cuando se cumplan, ¡se apliquen diferentes colores, caracteres, o texto!</p>
+		</div>
+		<code>	<!-- turture -->
+<span class="var">conds</span> <span class="op">=</span> (
+	<span class="obj">pbar</span>.<span class="obj">Cond</span>(<span class="str">"percentage >= 50"</span>, </span><span class="obj">pbar</span>.<span class="obj">ColorSet</span>.YELLOW, <span class="obj">pbar</span>.<span class="obj">CharSet</span>.BRICKS),
+	<span class="obj">pbar</span>.<span class="obj">Cond</span>(<span class="str">"percentage == 100"</span>, </span><span class="obj">pbar</span>.<span class="obj">ColorSet</span>.GREEN),
+	<span class="obj">pbar</span>.<span class="obj">Cond</span>(<span class="str">"text <- error"</span>, <span class="obj">pbar</span>.<span class="obj">ColorSet</span>.RED, <span class="var">formatset</span><span class="op">=</span><span class="obj">pbar</span>.<span class="obj">FormatSet</span>.DESCRIPTIVE)
+)
+
+<span class="var">myBar</span> <span class="op">=</span> <span class="obj">pbar</span>.<span class="obj">PBar</span>(<span class="var">conditions</span><span class="op">=</span><span class="var">conds</span>)
+
+<span class="kw">try</span>:
+	<span class="obj">pbar</span>.<span class="func">animate</span>(<span class="var">myBar</span>, <span class="obj">range</span>(<span class="num">50</span>))
+<span class="kw">except</span> <span class="obj">KeyboardInterrupt</span>:
+	<span class="var">myBar</span>.<span class="var">text</span> <span class="op">=</span> <span class="str">"Error!"</span>
+	<span class="var">myBar</span>.<span class="func">draw</span>()
+		</code>
+
+		<video width="100%" autoplay loop muted>
+			<source src="https://raw.githubusercontent.com/DarviL82/PBar/main/resources/examples/conds.mp4" type="video/mp4">
+		</video>
+
+	</div>
+
+
+	<div class="showcase part5">
+		<h1 class="show-title">Y... Eso es todo?</h1>
+		<div class="show content" style="width: 100%;">
+			<p>¡No! Eso no es todo! Sabía que esto no sería suficiente para ti, ¡así que puedo decirte que hay mucho más por ver! Hay muchas opciones distintas para modificar. Aquí tienes una pequeña demostración de algunas de esas opciones:</p>
+		</div>
+
+		<video width="100%" autoplay loop muted controls>
+			<source src="https://user-images.githubusercontent.com/48654552/140072905-f83a1ff4-fba7-481d-925d-727caed6c3e8.mp4" type="video/mp4">
+		</video>
+
+		<div class="show content" style="width: 100%;">
+			<p>
+				Si quieres ver todas las características de PBar, consulte las páginas de la Wiki en GitHub. También puedes hacer click en las palabras que están ligeramente resaltadas en los bloques de código de arriba. ¡Te mostrarán la página de la Wiki de ese objeto!
+			</p>
+			<a target="_blank" href="https://github.com/DarviL82/PBar/wiki" class="button">Visitar la Wiki</a>
+		</div>
+
+	</div>
+
+
+
+
+	<div class="links">
+		<h1 style="font-size: 2.5em">Enlaces y Descarga</h1>
+		<div class="items">
+			<a class="link" target="_blank" href="https://pypi.org/project/PBar2/">
+				<img src="images/pypi.svg" alt="">
+				<h2 class="link-title">Python Package Index</h2>
+				<p class="link-text">
+					PBar está disponible en los repositorios de PyPI bajo el nombre de <span class='pre'>pbar2</span>. ¿Por qué 2? ¿Es una secuela? Sí, lo es, pero también es por que alguien me cogió el nombre.
+				</p>
+			</a>
+			<a class="link" target="_blank" href="https://github.com/DarviL82/PBar">
+				<img src="images/github.png" alt="">
+				<h2 class="link-title">GitHub</h2>
+				<p class="link-text">
+					No podía faltar un control de versiones que ayude en mi mediocre organización (y la perdida de archivos). <i>En serio, gracias git.</i> Ah sí, también puedes encontrar todo el código fuente del proyecto. <span class='whisper'>pstt, es una chapuza.</span>
+				</p>
+			</a>
+			<a class="link" target="_blank" href="https://aur.archlinux.org/packages/python-pbar/">
+				<img src="images/arch.png" alt="">
+				<h2 class="link-title">Arch User Repository</h2>
+				<p class="link-text">
+					También está disponible en el repositorio de paquetes de Arch, gracias a <span style='color: green'>MithicSpirit</span>. <span class='whisper'>I don't use Arch btw.</span>
+				</p>
+			</a>
+		</div>
+	</div>
+
+
+
+	<footer>
+		<div class="credits-logo" style="margin-right: 20px">
+			<img src="images/logo.png">
+		</div>
+		<div class="credits-content">
+			<h3>David Losantos</h3>
+			<a target="_blank" href="https://github.com/DarviL82/"><img class="credits-img" style="filter: invert()" src="images/github.png"></a>
+			<a target="_blank" href="https://twitter.com/DarviL82_"><img class="credits-img" src="images/twitter.png"></a>
+			<a style="position: relative" target="_blank" href="https://discord.gg/">
+				<img class="credits-img" src="images/discord.png"> <span class="mshow"> DarviL#3242 </span>
+				<div class="tooltip"> DarviL#3242 </div>
+			</a>
+		</div>
+	</footer>
+</body>
+<script src="scripts/main.js"></script>
+
+</html>
