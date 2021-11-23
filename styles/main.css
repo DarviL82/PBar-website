@@ -35,6 +35,13 @@ body {
   background-color: #363636;
 }
 
+body.preload * {
+  -webkit-animation-duration: 0ms !important;
+          animation-duration: 0ms !important;
+  -webkit-transition: 0ms !important;
+  transition: 0ms !important;
+}
+
 span {
   font-family: inherit;
 }
@@ -89,7 +96,7 @@ h3 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.4em 1.5em;
+  padding: 0.4em 1em;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -109,6 +116,12 @@ h3 {
   color: transparent;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.267);
           box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.267);
+  cursor: pointer;
+}
+
+.lang-changer svg {
+  height: 1em;
+  width: 1em;
 }
 
 .lang-changer::after {
@@ -117,6 +130,7 @@ h3 {
   content: "";
   inset: -50px -50px;
   z-index: -1;
+  cursor: default;
 }
 
 .lang-changer:hover {
@@ -143,7 +157,7 @@ a.button {
   transition: background-color 0.25s, box-shadow 1s, color 0.25s, -webkit-box-shadow 1s;
 }
 
-a.button:hover {
+a.button:hover, a.button:focus-visible {
   background-color: #77dba4;
   -webkit-box-shadow: 0 0 10px 1px rgba(36, 36, 36, 0.63);
           box-shadow: 0 0 10px 1px rgba(36, 36, 36, 0.63);
@@ -209,7 +223,7 @@ a.button:hover {
 
 @supports not ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) {
   .banner {
-    --bg-opacity: 0.6;
+    --bg-opacity: 0.8;
   }
 }
 
@@ -269,9 +283,9 @@ a.button:hover {
   width: 100%;
   font-size: 0.9em;
   position: relative;
-  margin: 30px;
-  padding: 10px;
-  padding-right: 50px;
+  margin: 1.5em;
+  padding: .75em;
+  padding-right: 3.5em;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -304,7 +318,7 @@ a.button:hover {
   margin-top: auto;
 }
 
-.info .info-item a:hover {
+.info .info-item a:hover, .info .info-item a:focus-visible {
   background-color: var(--color);
 }
 
@@ -315,8 +329,8 @@ a.button:hover {
 }
 
 .info .info-item:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transform: scale(1.025);
+          transform: scale(1.025);
 }
 
 .info .info-item:hover::after {
@@ -535,7 +549,7 @@ code > .special:hover {
   z-index: -1;
 }
 
-.items .link:hover {
+.items .link:hover, .items .link:focus-visible {
   -webkit-box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.199);
           box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.199);
   -webkit-transform: scale(1.1);
@@ -544,7 +558,7 @@ code > .special:hover {
   z-index: 1;
 }
 
-.items .link:hover::before {
+.items .link:hover::before, .items .link:focus-visible::before {
   left: 130%;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -662,6 +676,9 @@ span.whisper {
     -webkit-transform: none;
             transform: none;
     color: black;
+  }
+  .lang-changer::after {
+    display: none;
   }
   .banner {
     font-size: 20vw;

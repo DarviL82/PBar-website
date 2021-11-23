@@ -28,8 +28,6 @@ function addTooltip(element, content) {
 }
 
 
-
-
 function addLink(element, url, target="_blank") {
 	element.style.cursor = "pointer"
 	element.classList.add("special")
@@ -40,7 +38,9 @@ function addLink(element, url, target="_blank") {
 
 
 
-function addCodeLinks() {
+
+/** Add the tooltips and links to all the spans in the code blocks */
+(function() {
 	let spans = document.querySelectorAll("code span")	// get all the spans inside codes */
 
 	for (let i = 0; i < spans.length; i++) {
@@ -53,8 +53,28 @@ function addCodeLinks() {
 			addTooltip(span, PBAR_INFO[span.innerHTML][1])
 		}
 	}
+})();
+
+
+/** Remove the preload class of the body after a small period of time */
+setTimeout(() => {
+	document.body.classList.remove("preload")
+}, 500)
+
+
+function showLanguagePrompt() {
+	let goto = (site) => open(site, "_self")
+	let prompt = new Prompt(
+		"Choose a language",
+		"Select a language for the content of this page.",
+		[
+			new PromptButton("English", null, () => goto("index.html")),
+			new PromptButton("Español", null, () => goto("es.html")),
+			new PromptButton("Polski", null, () => goto("pl.html")),
+			new PromptSpacer(null, ".25em"),
+			new PromptButton("Cancel", ["red", "darkred"])
+		]
+	)
+
+	prompt.show()
 }
-
-
-
-addCodeLinks()

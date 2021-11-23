@@ -34,6 +34,10 @@ $bar-gradient: linear-gradient(
 }
 
 body {background-color: rgb(54, 54, 54);}
+body.preload * {
+	animation-duration: 0ms !important;
+	transition: 0ms !important;
+}
 span {font-family: inherit;}
 p {margin: 15px 0;}
 
@@ -69,7 +73,7 @@ h3 { margin: 20px 0;}
 	justify-content: flex-end;
 	right: 50px;
 	width: fit-content;
-	padding: 0.4em 1.5em;
+	padding: 0.4em 1em;
 	height: max-content;
 	border-radius: 0 0 7px 7px;
 	z-index: 50;
@@ -81,13 +85,19 @@ h3 { margin: 20px 0;}
 	text-decoration: underline;
 	color: transparent;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.267);
+	cursor: pointer;
 
+	& svg {
+		height: 1em;
+		width: 1em;
+	}
 
 	&::after {	/* We use this to make the hold area way bigger */
 		position: absolute;
 		content: "";
 		inset: -50px -50px;
 		z-index: -1;
+		cursor: default;
 	}
 
 	&:hover {
@@ -120,7 +130,7 @@ a.button {
 		box-shadow 1s,
 		color 0.25s;
 
-	&:hover {
+	&:hover, &:focus-visible {
 		background-color: rgb(119, 219, 164);
 		box-shadow: 0 0 10px 1px rgba(36, 36, 36, 0.63);
 		color: black;
@@ -170,7 +180,7 @@ a.button {
 
 	@supports not (backdrop-filter: blur()) {
 		& {
-			--bg-opacity: 0.6;
+			--bg-opacity: 0.8;
 		}
 	}
 
@@ -226,8 +236,8 @@ a.button {
 		font-size: 0.9em;
 		position: relative;
 
-		margin: 30px;
-		padding: 10px; padding-right: 50px;
+		margin: 1.5em;
+		padding: .75em; padding-right: 3.5em;
 		flex-direction: column;
 		transition: all .5s;
 
@@ -247,14 +257,14 @@ a.button {
 
 		p {text-align: justify;}
 		a {margin-top: auto;}
-		a:hover {background-color: var(--color);}
+		a:hover, a:focus-visible {background-color: var(--color);}
 		h1 {
 			margin-bottom: 0.25em;
 			font-size: 2em;
 			color: var(--color)
 		}
 
-		&:hover { transform: scale(1.05); }
+		&:hover { transform: scale(1.025); }
 		&:hover::after { opacity: 0.15; }
 
 
@@ -459,7 +469,7 @@ code {
 			z-index: -1;
 		}
 
-		&:hover {
+		&:hover, &:focus-visible {
 			box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.199);
 			transform: scale(1.1);
 			outline: 2px solid transparent;
@@ -598,6 +608,7 @@ span.whisper {
 		transform: none;
 		color: black;
 	}
+	.lang-changer::after { display: none;}
 
 	.banner {
 		font-size: 20vw;
