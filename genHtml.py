@@ -22,11 +22,10 @@ HTML_CONTENT = """\
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{bannerSubtitle}">
 	<title> PBar - {bannerSubtitle} </title>
 	<link rel="icon" href="images/favicon.png">
 
-	<script defer src="https://darvil82.github.io/DarviLStuff/web/promptTest/prompt.js"></script>
-	<script defer src="scripts/main.js"></script>
 	<link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="preload">
@@ -63,7 +62,7 @@ HTML_CONTENT = """\
 			<p>
 				{infoItem3_text}
 			</p>
-			<a target="_blank" class="button" href="https://github.com/DarviL82/PBar/wiki">{infoItem3_button}</a>
+			<a target="_blank" rel="noopener" class="button" href="https://github.com/DarviL82/PBar/wiki">{infoItem3_button}</a>
 		</div>
 	</div>
 
@@ -96,8 +95,8 @@ HTML_CONTENT = """\
 		</div>
 		<div class="show code right">
 			<code>
-<span class="func">@</span><span class="obj">pbar</span>.<span class="func">taskWrapper</span>(<span class="var">myBar</span>, <span class="func">locals</span>())
-<span class="kw">def</span><span class="func"> my_task</span>():
+<span class="func">@</span><span class="obj">pbar</span>.<span class="func">taskWrapper</span>
+<span class="kw">def</span><span class="func"> my_task</span>(<span class="var">myBar</span>):
 	<span class="func">get_data</span>()
 	<span class="func">process_stuff</span>()
 	<span class="func">show_data</span>()
@@ -112,7 +111,7 @@ HTML_CONTENT = """\
 		<h1 class="show-title">{showcase3_title}</h1>
 		<div class="show code left">
 			<code>
-<span class="kw">def</span><span class="func"> my_task</span>():
+<span class="kw">def</span><span class="func"> my_task</span>(<span class="var">myBar</span>):
 	<span class="func">get_data</span>()
 	<span class="var">myBar</span>.<span class="func">step</span>()
 	<span class="func">process_stuff</span>()
@@ -173,7 +172,7 @@ HTML_CONTENT = """\
 			<p>
 				{showcase5_text2}
 			</p>
-			<a target="_blank" href="https://github.com/DarviL82/PBar/wiki" class="button">{showcase5_button}</a>
+			<a target="_blank" rel="noopener" href="https://github.com/DarviL82/PBar/wiki" class="button">{showcase5_button}</a>
 		</div>
 
 	</div>
@@ -184,21 +183,21 @@ HTML_CONTENT = """\
 	<div class="links">
 		<h1 style="font-size: 2.5em">{links_title}</h1>
 		<div class="items">
-			<a class="link" target="_blank" href="https://pypi.org/project/PBar2/">
+			<a class="link" target="_blank" rel="noopener" href="https://pypi.org/project/PBar2/">
 				<img src="images/pypi.svg" alt="">
 				<h2 class="link-title">Python Package Index</h2>
 				<p class="link-text">
 					{link1_text}
 				</p>
 			</a>
-			<a class="link" target="_blank" href="https://github.com/DarviL82/PBar">
+			<a class="link" target="_blank" rel="noopener" href="https://github.com/DarviL82/PBar">
 				<img src="images/github.png" alt="">
 				<h2 class="link-title">GitHub</h2>
 				<p class="link-text">
 					{link2_text}
 				</p>
 			</a>
-			<a class="link" target="_blank" href="https://aur.archlinux.org/packages/python-pbar/">
+			<a class="link" target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/python-pbar/">
 				<img src="images/arch.png" alt="">
 				<h2 class="link-title">Arch User Repository</h2>
 				<p class="link-text">
@@ -212,19 +211,21 @@ HTML_CONTENT = """\
 
 	<footer>
 		<div class="credits-logo" style="margin-right: 20px">
-			<img src="images/logo.png">
+			<img alt="PBar logo" src="images/logo.png">
 		</div>
 		<div class="credits-content">
 			<h3>David Losantos</h3>
-			<a target="_blank" href="https://github.com/DarviL82/"><img class="credits-img" style="filter: invert()" src="images/github.png"></a>
-			<a target="_blank" href="https://twitter.com/DarviL82_"><img class="credits-img" src="images/twitter.png"></a>
-			<a style="position: relative" target="_blank" href="https://discord.gg/">
-				<img class="credits-img" src="images/discord.png"> <span class="mshow"> DarviL#3242 </span>
+			<a target="_blank" rel="noopener" href="https://github.com/DarviL82/"><img alt="GitHub" class="credits-img" style="filter: invert()" src="images/github.png"></a>
+			<a target="_blank" rel="noopener" href="https://twitter.com/DarviL82_"><img alt="Twitter" class="credits-img" src="images/twitter.png"></a>
+			<a style="position: relative" target="_blank" rel="noopener" href="https://discord.gg/">
+				<img alt="Discord" class="credits-img" src="images/discord.png"> <span class="mshow"> DarviL#3242 </span>
 				<div class="tooltip"> DarviL#3242 </div>
 			</a>
 		</div>
 	</footer>
 </body>
+	<script src="https://darvil82.github.io/DarviLStuff/web/promptTest/prompt.js"></script>
+	<script src="scripts/main.js"></script>
 </html>
 """
 
